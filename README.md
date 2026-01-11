@@ -11,7 +11,7 @@ This project investigates whether machine learning models can detect human activ
 - **Model Performance**: Random Forest significantly outperformed GLM, proving the non-linear nature of air pollution.
 
 ## 3. Repository Structure
-- `Code/`: Contains the R code for this project.
+- `Code/`: Contains the R code for this project: Data Pre-processing -- Weather Normalisation -- EDA and Visualisation -- Classification Models.
 - `Data/`: Datasets used in this module.
 - `Results/`: Output visualisations.
 
