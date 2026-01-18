@@ -16,6 +16,7 @@ This project investigates whether machine learning models can detect human activ
 - `Results/`: Output visualisations.
 
 ## 4. How to Run
-1. Clone this repository.
-2. Run the code in Rstudio, following this order:`Data Pre-processing`, `Weather Normalisation`, `Classification Models`.
+1. Download the files from `Data/`.
+2. Clone the code from `Code/`.
+3. Run the code in Rstudio, following this order:`Data Pre-processing`, `Weather Normalisation`, `Classification Models`.
 
