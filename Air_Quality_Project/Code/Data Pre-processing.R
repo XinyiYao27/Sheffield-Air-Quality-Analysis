@@ -178,7 +178,7 @@ corrplot(M,
 #Delete irrelevant variables
 wide <- wide %>% select(-rain, -preci)
 
-M
+
 
 
 
@@ -241,14 +241,14 @@ no2_train_data <- no2_impute_data %>%
 
 #GLM
 no2_glm_model <- glm(NO2_Devon ~ ., 
-               data = no2_train_data)
+                     data = no2_train_data)
 print(summary(no2_glm_model))
 
 #Random Forest
 library(randomForest)
 no2_rf_model <- randomForest(NO2_Devon ~ .,
-                         data = no2_train_data,    
-                         do.trace = 10)   # to know it's still computing
+                             data = no2_train_data,    
+                             do.trace = 10)   # to know it's still computing
 print(no2_rf_model)
 
 
@@ -290,9 +290,10 @@ df_final <- wide %>%
   mutate(
     flag_no2 = case_when(
       site == "Devon" & is.na(no2) & !is.na(no2_fixed) ~ "Imputed",
-      TRUE ~ "Observed"),
+      TRUE ~ "Observed"
+    ),
     no2 = ifelse(site == "Devon", no2_fixed, no2)
-    ) %>%
+  ) %>%
   select(-no2_fixed)
 
 print(sum(is.na(df_final$no2[df_final$site == "Devon"]))) 
@@ -374,6 +375,7 @@ print(summary(df_final %>% filter(site == "Barn") %>% select(pm25)))
 ##The final data frame is ready to use
 df <- df_final %>%
   mutate(weekend = ifelse(is_weekend == "Weekend", 1, 0)) 
+
 
 
 
