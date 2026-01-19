@@ -29,6 +29,7 @@ pm25_hist <-
   theme_minimal() + 
   labs(x = "PM2.5", y = "Density")
 
+library(patchwork)
 p_hist <- no2_hist | pm25_hist
 p_hist
 
@@ -41,7 +42,7 @@ kruskal.test(pm25 ~ site, data = df)
 
 
 ##Meteorology Normalisation
-library(patchwork)
+
 library(broom) 
 
 # 1. Calculate the daily mean data before weather normalisation
@@ -220,3 +221,4 @@ p_weather
 
 ##Remove variables irrelevant to subsequent analysis
 df_new <- df_new %>% select(-temp,-ws,-wd,-humidity,-unix_time)
+
