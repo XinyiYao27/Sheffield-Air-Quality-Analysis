@@ -319,11 +319,9 @@ filter(df_final, site=='Devon') %>%
 #Imput missing PM2.5
 pm25_wide <- wide %>%
   select(date, month, hour, site, pm25) %>%
-  pivot_wider(
-    names_from = site,
-    values_from = pm25,
-    names_prefix = "PM25_"
-  )
+  pivot_wider(names_from = site,
+              values_from = pm25,
+              names_prefix = "PM25_")
 pm25_wide %>% select(-date) %>% drop_na() %>% cor()
 
 barn_aux <- wide %>%
@@ -338,9 +336,9 @@ pm25_train_data <- pm25_impute_data %>%
 
 set.seed(123)
 pm25_rf_model <- randomForest(PM25_Barn ~ ., 
-                        data = pm25_train_data,
-                        importance = TRUE,
-                        do.trace = 10)
+                              data = pm25_train_data,
+                              importance = TRUE,
+                              do.trace = 10)
 
 print(pm25_rf_model)
 varImpPlot(pm25_rf_model)
@@ -376,6 +374,7 @@ print(summary(df_final %>% filter(site == "Barn") %>% select(pm25)))
 ##The final data frame is ready to use
 df <- df_final %>%
   mutate(weekend = ifelse(is_weekend == "Weekend", 1, 0)) 
+
 
 
 
